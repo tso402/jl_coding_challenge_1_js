@@ -4,10 +4,19 @@ function FormatTime(input){
   } else if (input === 1) {
     return '1 second'
   } else if (input > 60){
-    return `${Math.floor(input / 60)} minute and ${input % 60} seconds`  
+      response = Minutes(input);
+
+    return `${response.minutes} minute and ${response.remainder} seconds`  
   }
     else if (input > 1) {
     return input + " seconds"
+  }
+}
+
+function Minutes(seconds){
+  return { minutes: Math.floor(seconds / 60),
+           remainder: seconds % 60
+
   }
 }
 
