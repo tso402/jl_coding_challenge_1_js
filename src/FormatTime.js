@@ -1,7 +1,9 @@
-function FormatTime(seconds){
-  if (seconds === 0) {
+function FormatTime(input){
+  if (input === 0) {
     return 'None'
-  } else if (seconds === 1) {
+  } else if (input === 1) {
     return '1 second'
+  } else if (input > 1) {
+    return input + " seconds"
   }
 }
