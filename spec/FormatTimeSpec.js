@@ -12,4 +12,8 @@ describe ('FormatTime', function() {
   it("returns '1 minute and 2 seconds' when time given 62", function(){
     expect(FormatTime(62)).toEqual('1 minute and 2 seconds')
   })
+
+  it("returns '1 hour and 2 seconds' when time given 3602", function(){
+    expect(FormatTime(3602)).toEqual('1 hour and 2 seconds')
+  })
 })
