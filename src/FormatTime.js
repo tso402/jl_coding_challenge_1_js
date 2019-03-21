@@ -5,14 +5,14 @@ function FormatTime(input){
     return '1 second'
   } else if(input > 3600){
 
-    hours = Math.floor(input /3600)
-    seconds = input % 3600
-    return `${hours} hour and ${seconds} seconds` 
+    response = Hours(input)
+
+    return `${response.hours} hour and ${response.seconds} seconds`
 
   } else if (input > 60){
       response = Minutes(input);
 
-    return `${response.minutes} minute and ${response.remainder} seconds`
+    return `${response.minutes} minute and ${response.seconds} seconds`
   }
     else if (input > 1) {
     return input + " seconds"
@@ -21,7 +21,15 @@ function FormatTime(input){
 
 function Minutes(seconds){
   return { minutes: Math.floor(seconds / 60),
-           remainder: seconds % 60
+           seconds: seconds % 60
 
   }
+}
+function Hours(seconds){
+  hours = Math.floor(seconds / 3600)
+  minutes = Minutes(seconds %3600)
+  return { hours: hours,
+           minutes: minutes.minutes,
+           seconds:minutes.seconds
+         }
 }
