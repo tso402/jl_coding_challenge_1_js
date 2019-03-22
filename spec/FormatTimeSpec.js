@@ -3,15 +3,19 @@ describe ('FormatTime', function() {
   it("returns 'None' when time given is 0", function(){
     expect(FormatTime(0)).toEqual('None')
   })
+
   it("returns '1 second' when time given is 1", function(){
     expect(FormatTime(1)).toEqual('1 second')
   })
+
   it("returns '10 seconds' when time given is 10", function(){
     expect(FormatTime(10)).toEqual('10 seconds')
   })
+
   it("returns '1 minute' when time given 60", function(){
     expect(FormatTime(60)).toEqual('1 minute')
   })
+
   it("returns '1 minute and 2 seconds' when time given 62", function(){
     expect(FormatTime(62)).toEqual('1 minute and 2 seconds')
   })
@@ -30,5 +34,13 @@ describe ('FormatTime', function() {
 
   it("returns '1 day' when time given 86400", function(){
     expect(FormatTime(86400)).toEqual('1 day')
+  })
+
+  it("returns '1 day and 3 seconds' when time given 86403", function(){
+    expect(FormatTime(86403)).toEqual('1 day and 3 seconds')
+  })
+
+  it("returns '1 day, 3 hours and 3 seconds' when time given 97203", function(){
+    expect(FormatTime(97203)).toEqual('1 day , 3 hours and 3 seconds')
   })
 })
