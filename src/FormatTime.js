@@ -3,7 +3,7 @@ function FormatTime(input){
     return 'None'
   } else if (input === 1) {
     return '1 second'
-  } else if(input > 3600){
+  } else if (input >= 3600){
 
     response = Hours(input)
     responseArray = []
