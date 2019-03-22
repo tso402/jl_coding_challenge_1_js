@@ -6,13 +6,24 @@ function FormatTime(input){
   } else if(input > 3600){
 
     response = Hours(input)
-
-    return `${response.hours.hoursValue} ${response.hours.hoursUnit} and ${response.seconds.secondsValue} ${response.seconds.secondsUnit}`
+    responseArray = []
+    Object.keys(response).forEach(function (key){
+      if (response[key]["value"] != 0){
+      responseArray.push(response[key]["value"])
+      responseArray.push(response[key]["unit"])
+      responseArray.push(",")
+      }
+    });
+    responseArray.pop()
+    if (responseArray.length > 3){
+      responseArray[responseArray.length-3] = "and"
+    }
+    return responseArray.join(" ")
 
   } else if (input > 60){
       response = Minutes(input);
 
-    return `${response.minutes.minutesValue} ${response.minutes.minutesUnit} and ${response.seconds.secondsValue} ${response.seconds.secondsUnit}`
+    return `${response.minutes.value} ${response.minutes.unit} and ${response.seconds.value} ${response.seconds.unit}`
   }
     else if (input > 1) {
     return input + " seconds"
@@ -22,18 +33,18 @@ function FormatTime(input){
 function Seconds(inputSeconds){
   secondsValue = inputSeconds
   if (secondsValue > 1) {secondsUnit = 'seconds'
-  } else if (secondsValue = 1){secondsUnit = 'second'
+  } else if (secondsValue === 1){secondsUnit = 'second'
   } else {secondsUnit = 'ignore'}
-  seconds = {secondsValue: secondsValue, secondsUnit: secondsUnit}
+  seconds = {value: secondsValue, unit: secondsUnit}
   return seconds
 }
 
 function Minutes(seconds){
   minutesValue = Math.floor(seconds / 60)
   if (minutesValue > 1) {minutesUnit = 'minutes'
-  } else if (minutesValue = 1){minutesUnit = 'minute'
+  } else if (minutesValue === 1){minutesUnit = 'minute'
   } else {minutesUnit = 'ignore'}
-  minutes = {minutesValue: minutesValue, minutesUnit: minutesUnit}
+  minutes = {value: minutesValue, unit: minutesUnit}
   seconds = Seconds(seconds % 60)
   secondsValue = seconds % 60
   return { minutes: minutes,
@@ -44,13 +55,13 @@ function Minutes(seconds){
 function Hours(inputSeconds){
   hoursValue = Math.floor(inputSeconds / 3600)
   if (hoursValue > 1) {hoursUnit = 'hours'
-  } else if (hoursValue = 1){hoursUnit = 'hour'
+  } else if (hoursValue === 1){hoursUnit = 'hour'
   } else {hoursUnit = 'ignore'}
-  hours = {hoursValue: hoursValue, hoursUnit: hoursUnit}
+  hours = {value: hoursValue, unit: hoursUnit}
   minutes = Minutes(inputSeconds % 3600)
   seconds = Seconds(inputSeconds % 60)
   return { hours: hours,
-           minutes: minutes,
+           minutes: minutes.minutes,
            seconds: seconds
          }
 }
