@@ -9,6 +9,9 @@ describe ('FormatTime', function() {
   it("returns '10 seconds' when time given is 10", function(){
     expect(FormatTime(10)).toEqual('10 seconds')
   })
+  it("returns '1 minute' when time given 60", function(){
+    expect(FormatTime(60)).toEqual('1 minute')
+  })
   it("returns '1 minute and 2 seconds' when time given 62", function(){
     expect(FormatTime(62)).toEqual('1 minute and 2 seconds')
   })
