@@ -1,2 +1,7 @@
 # jl_coding_challenge_1_js
-[![Build Status](https://travis-ci.org/tso402/jl_coding_challenge_1_js.svg?branch=master)](https://travis-ci.org/tso402/jl_coding_challenge_1_js)
+
+A test-driven entry in Javascript by James Ault, Lima Vadakara and Sarah Byrne
+
+##Instructions
+Open SpecRunner.html in a browser to see passing tests.
+Open console in the same browser and key ```FormatTime(seconds)``` to call function e.g. FormatTime(3600) returns "1 hour"
