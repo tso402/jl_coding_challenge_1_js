@@ -29,7 +29,7 @@ function FormatTime(input) {
     if (responseArray.length > 3){
       responseArray[responseArray.length-3] = "and"
     }
-    return responseArray.join(" ")
+    return responseArray.join(" ").split(" ,").join(",")
 
   } 
 }
@@ -44,7 +44,7 @@ function Seconds(inputSeconds){
 }
 
 function Minutes(seconds){
-  minutesValue = Math.floor(seconds / 60)
+  minutesValue = Math.floor(seconds / MINUTE)
   if (minutesValue > 1) {minutesUnit = 'minutes'
   } else if (minutesValue === 1){minutesUnit = 'minute'
   } else {minutesUnit = 'ignore'}
@@ -52,7 +52,7 @@ function Minutes(seconds){
 }
 
 function Hours(inputSeconds){
-  hoursValue = Math.floor(inputSeconds / 3600)
+  hoursValue = Math.floor(inputSeconds / HOUR)
   if (hoursValue > 1) {hoursUnit = 'hours'
   } else if (hoursValue === 1){hoursUnit = 'hour'
   } else {hoursUnit = 'ignore'}
@@ -60,7 +60,7 @@ function Hours(inputSeconds){
 }
 
 function Days(inputSeconds){
-  daysValue = Math.floor(inputSeconds / 86400)
+  daysValue = Math.floor(inputSeconds / DAY)
   if (daysValue > 1) {daysUnit = 'days'
   } else if (daysValue === 1){daysUnit = 'day'
   } else {daysUnit = 'ignore'}
@@ -68,7 +68,7 @@ function Days(inputSeconds){
 }
 
 function Years(inputSeconds){
-  yearsValue = Math.floor(inputSeconds / 31536000)
+  yearsValue = Math.floor(inputSeconds / YEAR)
   if (yearsValue > 1) {yearsUnit = 'years'
   } else if (yearsValue === 1){yearsUnit = 'year'
   } else {yearsUnit = 'ignore'}
