@@ -1,16 +1,19 @@
-function FormatTime(input){
+function FormatTime(input) {
+  SECOND = 1
+  MINUTE = 60 * SECOND
+  HOUR = 60 * MINUTE
+  DAY = 24 * HOUR
+  YEAR = 365 * DAY
+
   if (input === 0) {
     return 'None'
-  } else if (input === 1) {
-    return '1 second'
-  } else if (input >= 60){
-
+  } else {
     response = {
       years: Years(input),
-      days: Days(input % 31536000),
-      hours: Hours(input % 86400),
-      minutes: Minutes(input % 3600),
-      seconds: Seconds(input % 60)
+      days: Days(input % YEAR),
+      hours: Hours(input % DAY),
+      minutes: Minutes(input % HOUR),
+      seconds: Seconds(input % MINUTE)
     }
 
     responseArray = []
@@ -21,15 +24,14 @@ function FormatTime(input){
       responseArray.push(",")
       }
     });
+
     responseArray.pop()
     if (responseArray.length > 3){
       responseArray[responseArray.length-3] = "and"
     }
     return responseArray.join(" ")
 
-  } else {
-    return input + " seconds"
-  }
+  } 
 }
 
 function Seconds(inputSeconds){
