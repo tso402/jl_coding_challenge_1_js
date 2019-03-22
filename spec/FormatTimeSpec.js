@@ -43,4 +43,8 @@ describe ('FormatTime', function() {
   it("returns '1 day, 3 hours and 3 seconds' when time given 97203", function(){
     expect(FormatTime(97203)).toEqual('1 day , 3 hours and 3 seconds')
   })
+
+  it("returns '1 year' when time given is 31536000", function(){
+    expect(FormatTime(31536000)).toEqual('1 year')
+  })
 })
