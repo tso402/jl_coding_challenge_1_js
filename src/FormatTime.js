@@ -6,7 +6,8 @@ function FormatTime(input){
   } else if (input >= 60){
 
     response = {
-      hours: Hours(input),
+      days: Days(input),
+      hours: Hours(input % 86400),
       minutes: Minutes(input % 3600),
       seconds: Seconds(input % 60)
     }
@@ -53,4 +54,12 @@ function Hours(inputSeconds){
   } else if (hoursValue === 1){hoursUnit = 'hour'
   } else {hoursUnit = 'ignore'}
   return {value: hoursValue, unit: hoursUnit}
+}
+
+function Days(inputSeconds){
+  daysValue = Math.floor(inputSeconds / 86400)
+  if (daysValue > 1) {daysUnit = 'days'
+  } else if (daysValue === 1){daysUnit = 'day'
+  } else {daysUnit = 'ignore'}
+  return {value: daysValue, unit: daysUnit}
 }

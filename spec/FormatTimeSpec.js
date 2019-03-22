@@ -28,7 +28,7 @@ describe ('FormatTime', function() {
     expect(FormatTime(3902)).toEqual('1 hour , 5 minutes and 2 seconds')
   })
 
-  // it("returns '1 day' when time given 86400", function(){
-  //   expect(FormatTime(86400)).toEqual('1 day')
-  // })
+  it("returns '1 day' when time given 86400", function(){
+    expect(FormatTime(86400)).toEqual('1 day')
+  })
 })
