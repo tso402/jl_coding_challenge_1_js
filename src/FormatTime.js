@@ -1,11 +1,11 @@
-function FormatTime(input) {
+function formatTime(input) {
   SECOND = 1
   MINUTE = 60 * SECOND
   HOUR = 60 * MINUTE
   DAY = 24 * HOUR
   YEAR = 365 * DAY
 
-  if (input === 0) {
+  if (input <= 0) {
     return 'None'
   } else {
     response = {
